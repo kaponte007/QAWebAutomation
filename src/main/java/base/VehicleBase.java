@@ -1,13 +1,7 @@
 package base;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 
-import pageObjects.DriverBasidcInfoPO;
-import pageObjects.DriverDetailsPO;
-import pageObjects.DriverHomePO;
-import pageObjects.DriverReviewPO;
-import pageObjects.LogInPO;
 import pageObjects.VehicleBasidcInfoPO;
 import pageObjects.VehicleHomePO;
 import utils.ExcelUtils;
