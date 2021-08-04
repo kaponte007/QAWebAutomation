@@ -11,7 +11,7 @@ import utils.ExtentReportConfig;
 @CucumberOptions(plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
 							features= "src/test/java/features",
 							glue="stepDefinition",
-							tags = "@Driver")
-public class DriverRunner extends AbstractTestNGCucumberTests {
-	static { ExtentReportConfig.setReportName("Driver");}
+							tags = "@Vehicle")
+public class VehicleRunner extends AbstractTestNGCucumberTests {
+	static { ExtentReportConfig.setReportName("Vehicle");}
 }

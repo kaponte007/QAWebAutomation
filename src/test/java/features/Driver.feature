@@ -1,10 +1,10 @@
 #Author: Keneth Aponte
 
 @Driver
-Feature: Title of your feature
-  I want to use this template for my feature file
+Feature: Driver scenarios
+Test cases in driver web page
 
-  Scenario: Title of your scenario
+  Scenario: Creating a new driver
       Given I open EDGE
       Then I open the driver web page
       And I log in
