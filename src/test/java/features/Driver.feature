@@ -10,5 +10,6 @@ Feature: Title of your feature
       And I log in
       Then I click add new driver
       And populate new driver info
+      Then I validate the driver created
   
 

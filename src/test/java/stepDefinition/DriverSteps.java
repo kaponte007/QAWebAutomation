@@ -30,5 +30,11 @@ public class DriverSteps {
 		DriverBase base = new DriverBase(BrowserConfig.getDriver());
 		base.populateDriverInfo();
 	}
+	
+	@Then("I validate the driver created")
+	public void validate_driver() {
+		DriverBase base = new DriverBase(BrowserConfig.getDriver());
+		base.validateDriverCreated();
+	}
 
 }

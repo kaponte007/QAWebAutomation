@@ -1,8 +1,10 @@
 package base;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import pageObjects.DriverBasidcInfoPO;
+import pageObjects.DriverDetailsPO;
 import pageObjects.DriverHomePO;
 import pageObjects.DriverReviewPO;
 import pageObjects.LogInPO;
@@ -43,12 +45,19 @@ public class DriverBase {
 	public void populateDriverInfo() {
 		DriverBasidcInfoPO obj = new DriverBasidcInfoPO(driver);
 		DriverReviewPO obj2 = new DriverReviewPO(driver);
-		obj.getDriverFirstNameTxtBox().sendKeys("NOMBRE");
+		obj.getDriverFirstNameTxtBox().sendKeys("NOMBRE DOS");
 		obj.getDriverLastNameTxtBox().sendKeys("LAST");
-		obj.getDriverEmailTxtBox().sendKeys("testingNow@mailinator.com");
-		obj.getDriverPhoneTxtBox().sendKeys("9999999999");		
-		obj.getContinueBtn().click();
+		obj.getDriverEmailTxtBox().sendKeys("testingNow3@mailinator.com");
+		obj.getDriverPhoneTxtBox().sendKeys("9999999998");
 		GeneralUtils.forceWait(2);
+		obj.getContinueBtn().click();
 		obj2.getSaveBtn().click();
+		System.out.println("test");
+	}
+	
+	public void validateDriverCreated() {
+		DriverDetailsPO obj = new DriverDetailsPO(driver);
+		Assert.assertNotNull(obj.getDriverIdLabel());
+		//@TODO: Add more validations 
 	}
 }
