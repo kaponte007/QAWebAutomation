@@ -1,8 +1,10 @@
 package base;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import pageObjects.VehicleBasidcInfoPO;
+import pageObjects.VehicleDetailsPO;
 import pageObjects.VehicleHomePO;
 import utils.ExcelUtils;
 import utils.GeneralUtils;
@@ -19,21 +21,28 @@ public class VehicleBase {
 		final String url = ExcelUtils.getPropertyFromTestDataFile("url.vehicle.qa");
 		driver.get(url);
 	}
-	
+
 	public void clickAddNewVehicle() {
 		VehicleHomePO obj = new VehicleHomePO(driver);
 		obj.getAddNewVehicleBtn().click();
 	}
-	
+
 	public void populateVehicleInfo() {
 		VehicleBasidcInfoPO obj = new VehicleBasidcInfoPO(driver);
 		obj.getLicenseTxtBox().clear();
-		obj.getLicenseTxtBox().sendKeys("AAA-123");
+		obj.getLicenseTxtBox().sendKeys("2342366");
 		obj.getMakeDropdown().sendKeys("Dodge");
 		obj.getModelDropdown().sendKeys("Caravan");
-		obj.getLicenseTxtBox().click();
-		GeneralUtils.forceWait(1);
+		obj.getCabNumberTxtBox().sendKeys("1234");
 		obj.getSaveCloseBtn().click();
 	}
-	
+
+	public void validateVehicule() {
+		VehicleHomePO obj = new VehicleHomePO(driver);
+		VehicleDetailsPO obj2 = new VehicleDetailsPO(driver);
+		Assert.assertNotNull(obj.getVehiclesTitle());
+		obj.getSearchTxtBox().sendKeys("2342366");
+		Assert.assertNotNull(obj2.getPlateLabel());
+	}
+
 }

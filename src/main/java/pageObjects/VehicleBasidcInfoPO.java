@@ -31,5 +31,10 @@ public class VehicleBasidcInfoPO {
 		return driver.findElement(By.xpath("//button[text()='Save and Close']"));
 	}
 	
+	public WebElement getCabNumberTxtBox() {
+		return driver.findElement(By.name("cab_number"));
+	}
+
+	
 
 }

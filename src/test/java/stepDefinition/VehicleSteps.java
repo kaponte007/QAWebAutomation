@@ -1,6 +1,5 @@
 package stepDefinition;
 
-import base.DriverBase;
 import base.VehicleBase;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -24,6 +23,12 @@ public class VehicleSteps {
 	public void populate_driver_info() {
 		VehicleBase base = new VehicleBase(BrowserConfig.getDriver());
 		base.populateVehicleInfo();
+	}
+	
+	@Then("I validate the vehicule created")
+	public void validate_vehicule() {
+		VehicleBase base = new VehicleBase(BrowserConfig.getDriver());
+		base.validateVehicule();
 	}
 
 }
