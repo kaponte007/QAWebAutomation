@@ -1,5 +1,7 @@
 package base;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -27,21 +29,27 @@ public class VehicleBase {
 		obj.getAddNewVehicleBtn().click();
 	}
 
-	public void populateVehicleInfo() {
+	public void populateVehicleInfo() throws IOException {
 		VehicleBasidcInfoPO obj = new VehicleBasidcInfoPO(driver);
+		final String plate = ExcelUtils.getPropertyFromTestDataFile("vehicle.license");
+		final String cab = ExcelUtils.getPropertyFromTestDataFile("vehicle.cab");
+		final String make = ExcelUtils.getPropertyFromTestDataFile("vehicle.make");
+		final String model = ExcelUtils.getPropertyFromTestDataFile("vehicle.model");
+		
 		obj.getLicenseTxtBox().clear();
-		obj.getLicenseTxtBox().sendKeys("2342366");
-		obj.getMakeDropdown().sendKeys("Dodge");
-		obj.getModelDropdown().sendKeys("Caravan");
-		obj.getCabNumberTxtBox().sendKeys("1234");
+		obj.getLicenseTxtBox().sendKeys(plate);
+		obj.getMakeDropdown().sendKeys(make);
+		obj.getModelDropdown().sendKeys(model);
+		obj.getCabNumberTxtBox().sendKeys(cab);
 		obj.getSaveCloseBtn().click();
 	}
 
-	public void validateVehicule() {
+	public void validateVehicule() throws IOException {
 		VehicleHomePO obj = new VehicleHomePO(driver);
 		VehicleDetailsPO obj2 = new VehicleDetailsPO(driver);
+		final String plate = ExcelUtils.getPropertyFromTestDataFile("vehicle.license");
 		Assert.assertNotNull(obj.getVehiclesTitle());
-		obj.getSearchTxtBox().sendKeys("2342366");
+		obj.getSearchTxtBox().sendKeys(plate);
 		Assert.assertNotNull(obj2.getPlateLabel());
 	}
 

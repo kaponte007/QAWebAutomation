@@ -1,5 +1,7 @@
 package stepDefinition;
 
+import java.io.IOException;
+
 import base.DriverBase;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -26,7 +28,7 @@ public class DriverSteps {
 	}
 	
 	@And("populate new driver info")
-	public void populate_driver_info() {
+	public void populate_driver_info() throws IOException {
 		DriverBase base = new DriverBase(BrowserConfig.getDriver());
 		base.populateDriverInfo();
 	}

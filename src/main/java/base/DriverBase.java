@@ -1,5 +1,7 @@
 package base;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -42,17 +44,21 @@ public class DriverBase {
 		obj.getAddNewDriverBtn().click();
 	}
 	
-	public void populateDriverInfo() {
+	public void populateDriverInfo() throws IOException {
 		DriverBasidcInfoPO obj = new DriverBasidcInfoPO(driver);
 		DriverReviewPO obj2 = new DriverReviewPO(driver);
-		obj.getDriverFirstNameTxtBox().sendKeys("NOMBRE DOS");
-		obj.getDriverLastNameTxtBox().sendKeys("LAST");
-		obj.getDriverEmailTxtBox().sendKeys("testingNow3@mailinator.com");
-		obj.getDriverPhoneTxtBox().sendKeys("9999999998");
+		final String name = ExcelUtils.getPropertyFromTestDataFile("driver.name");
+		final String lastName = ExcelUtils.getPropertyFromTestDataFile("driver.lastName");
+		final String email = ExcelUtils.getPropertyFromTestDataFile("driver.email");
+		final String phone = ExcelUtils.getPropertyFromTestDataFile("driver.phone");
+		
+		obj.getDriverFirstNameTxtBox().sendKeys(name);
+		obj.getDriverLastNameTxtBox().sendKeys(lastName);
+		obj.getDriverEmailTxtBox().sendKeys(email);
+		obj.getDriverPhoneTxtBox().sendKeys(phone);
 		GeneralUtils.forceWait(2);
 		obj.getContinueBtn().click();
 		obj2.getSaveBtn().click();
-		System.out.println("test");
 	}
 	
 	public void validateDriverCreated() {
