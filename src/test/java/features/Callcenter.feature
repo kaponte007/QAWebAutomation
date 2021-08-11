@@ -8,6 +8,10 @@ Test cases in call center web page
       Given I open EDGE
       Then I open the call center web page
       And I log in
+      Then I click the BOOK A RIDE btn
+      And I populate the ride information
+      And I click timing: NEXT AVAILABLE
+      Then I click SCHEDULE RIDE btn
   
   
 

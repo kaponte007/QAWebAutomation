@@ -22,5 +22,10 @@ public class CallcenterHomePO {
 	public WebElement getFindBtn() {
 		return driver.findElement(By.xpath("//button[text()='FIND']"));
 	}
+	
+	public WebElement getBookARideBtn() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='navbar-end']/a[contains(@href, 'book-a-ride')]")));
+	}
+	
 
 }

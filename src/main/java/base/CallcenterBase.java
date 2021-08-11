@@ -1,9 +1,12 @@
 package base;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
+import pageObjects.CallcenterBookRidePO;
 import pageObjects.CallcenterHomePO;
 import utils.ExcelUtils;
+import utils.GeneralUtils;
 
 public class CallcenterBase {
 	private WebDriver driver;
@@ -23,6 +26,42 @@ public class CallcenterBase {
 		CallcenterHomePO obj = new CallcenterHomePO(driver);
 		obj.getSearchTxtbox().sendKeys(rider);
 		obj.getFindBtn().click();
+	}
+
+	public void clickBookRide() {
+		CallcenterHomePO obj = new CallcenterHomePO(driver);
+		obj.getBookARideBtn().click();
+	}
+
+	public void populateRideInfo() {
+		CallcenterBookRidePO obj = new CallcenterBookRidePO(driver);
+		obj.getAccountSearchBox().sendKeys("Test");
+		obj.getFirstOptionListAccount().click();
+		obj.getRiderFirstNameTxtBox().sendKeys("Nombre");
+		obj.getRiderLastNameTxtBox().sendKeys("Last");
+		obj.getRiderPhoneTxtBox().sendKeys("8888888888"); //@TODO: check why is not populating
+		obj.getRiderEmailTxtBox().sendKeys("testing@test.com");
+		
+		obj.getPickUpLocationTxtBox().sendKeys("JFK Airport (JFK), Queens, NY, USA");
+		GeneralUtils.forceWait(1);
+		obj.getPickUpLocationTxtBox().sendKeys(Keys.DOWN);
+		obj.getPickUpLocationTxtBox().sendKeys(Keys.ENTER);
+		obj.getDropoffLocationTxtBox().sendKeys("Jamaica Hospital Medical Center, Van Wyck Expressway, Richmond Hill, NY, USA");
+		GeneralUtils.forceWait(1);
+		obj.getDropoffLocationTxtBox().sendKeys(Keys.DOWN);
+		obj.getDropoffLocationTxtBox().sendKeys(Keys.ENTER);
+	}
+
+	public void clickNextAvailableBtn() {
+		CallcenterBookRidePO obj = new CallcenterBookRidePO(driver);
+		obj.getTimingNextAvailableBtn().click();
+		
+		System.out.println("ESTIMATE FARE: "+obj.getEstimatedFareLabel().getText());
+	}
+
+	public void clickScheduleRideBtn() {
+		CallcenterBookRidePO obj = new CallcenterBookRidePO(driver);
+		obj.getScheduleRideBtn().click();	
 	}
 	
 	
