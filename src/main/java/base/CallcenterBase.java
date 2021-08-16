@@ -39,17 +39,19 @@ public class CallcenterBase {
 		obj.getFirstOptionListAccount().click();
 		obj.getRiderFirstNameTxtBox().sendKeys("Nombre");
 		obj.getRiderLastNameTxtBox().sendKeys("Last");
-		obj.getRiderPhoneTxtBox().sendKeys("8888888888"); //@TODO: check why is not populating
+		obj.getRiderPhoneTxtBox().click();
+		obj.getRiderPhoneTxtBox().sendKeys("8888888888");
 		obj.getRiderEmailTxtBox().sendKeys("testing@test.com");
 		
 		obj.getPickUpLocationTxtBox().sendKeys("JFK Airport (JFK), Queens, NY, USA");
 		GeneralUtils.forceWait(1);
 		obj.getPickUpLocationTxtBox().sendKeys(Keys.DOWN);
 		obj.getPickUpLocationTxtBox().sendKeys(Keys.ENTER);
-		obj.getDropoffLocationTxtBox().sendKeys("Jamaica Hospital Medical Center, Van Wyck Expressway, Richmond Hill, NY, USA");
+		obj.getDropoffLocationTxtBox().sendKeys("Queens Hospital Center");
 		GeneralUtils.forceWait(1);
 		obj.getDropoffLocationTxtBox().sendKeys(Keys.DOWN);
 		obj.getDropoffLocationTxtBox().sendKeys(Keys.ENTER);
+		GeneralUtils.forceWait(1);
 	}
 
 	public void clickNextAvailableBtn() {
