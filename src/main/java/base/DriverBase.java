@@ -49,7 +49,7 @@ public class DriverBase {
 		DriverReviewPO obj2 = new DriverReviewPO(driver);
 		final String name = ExcelUtils.getPropertyFromTestDataFile("driver.name");
 		final String lastName = ExcelUtils.getPropertyFromTestDataFile("driver.lastName");
-		final String email = ExcelUtils.getPropertyFromTestDataFile("driver.email");
+		final String email = "automation_"+System.currentTimeMillis()+"@mailinator.com";
 		final String phone = ExcelUtils.getPropertyFromTestDataFile("driver.phone");
 		
 		obj.getDriverFirstNameTxtBox().sendKeys(name);
@@ -59,6 +59,7 @@ public class DriverBase {
 		GeneralUtils.forceWait(2);
 		obj.getContinueBtn().click();
 		obj2.getSaveBtn().click();
+		System.out.println("Using email generated: "+email);
 	}
 	
 	public void validateDriverCreated() {

@@ -12,5 +12,6 @@ Test cases in driver web page
       Then I click add new driver
       And populate new driver info
       Then I validate the driver created
+      #Then I validate email confirmation
   
 
