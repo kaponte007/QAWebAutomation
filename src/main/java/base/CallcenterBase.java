@@ -65,6 +65,11 @@ public class CallcenterBase {
 		CallcenterBookRidePO obj = new CallcenterBookRidePO(driver);
 		obj.getScheduleRideBtn().click();	
 	}
+
+	public void makeCopy() {
+		CallcenterHomePO obj = new CallcenterHomePO(driver);
+		obj.getMakeCopyBtn().click();		
+	}
 	
 	
 }

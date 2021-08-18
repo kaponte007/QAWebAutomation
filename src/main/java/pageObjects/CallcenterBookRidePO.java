@@ -44,7 +44,7 @@ public class CallcenterBookRidePO {
 	}
 	
 	public WebElement getTimingNextAvailableBtn() {
-		return driver.findElement(By.xpath("//button[text()='Next Available']"));
+		return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Next Available']")));
 	}
 	
 	public WebElement getEstimatedFareLabel() {

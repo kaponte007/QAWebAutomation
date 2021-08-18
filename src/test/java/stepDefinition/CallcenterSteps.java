@@ -37,6 +37,12 @@ public class CallcenterSteps {
 		base.clickNextAvailableBtn();
 	}
 	
+	@Then("I click make a copy from first row")
+	public void make_copy() {
+		CallcenterBase base = new CallcenterBase(BrowserConfig.getDriver());
+		base.makeCopy();
+	}
+	
 
 
 

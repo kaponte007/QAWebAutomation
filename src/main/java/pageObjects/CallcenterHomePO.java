@@ -27,5 +27,9 @@ public class CallcenterHomePO {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='navbar-end']/a[contains(@href, 'book-a-ride')]")));
 	}
 	
+	public WebElement getMakeCopyBtn() {
+		return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//a[text()='Make a Copy']"))).get(0);
+	}
+	
 
 }
