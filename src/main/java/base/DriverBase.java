@@ -10,6 +10,7 @@ import pageObjects.DriverDetailsPO;
 import pageObjects.DriverHomePO;
 import pageObjects.DriverReviewPO;
 import pageObjects.LogInPO;
+import pojo.DriverPojo;
 import utils.ExcelUtils;
 import utils.GeneralUtils;
 
@@ -60,6 +61,11 @@ public class DriverBase {
 		obj.getContinueBtn().click();
 		obj2.getSaveBtn().click();
 		System.out.println("Using email generated: "+email);
+		
+		//Saving the driver info in memory
+		DriverPojo.setEmail(email);
+		DriverPojo.setLastName(lastName);
+		DriverPojo.setName(name);
 	}
 	
 	public void validateDriverCreated() {

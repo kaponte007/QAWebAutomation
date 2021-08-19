@@ -9,7 +9,6 @@ import pageObjects.VehicleBasidcInfoPO;
 import pageObjects.VehicleDetailsPO;
 import pageObjects.VehicleHomePO;
 import utils.ExcelUtils;
-import utils.GeneralUtils;
 
 public class VehicleBase {
 	private WebDriver driver;
