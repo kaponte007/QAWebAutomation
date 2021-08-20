@@ -1,5 +1,7 @@
 package pageObjects;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,6 +34,12 @@ public class DriverAppHomePO {
 		return driver.findElement(By.xpath("//button[text()='START']"));
 	}
 	
+	public List<WebElement> getAvailableVehicles() {
+		return driver.findElements(By.xpath("//div[@class='wrap-vehicle']/following-sibling::div"));
+	}
 	
+	public WebElement getSelectVehicleLabel() {
+		return getNameLabel("SELECT YOUR VEHICLE");
+	}
 
 }

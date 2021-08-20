@@ -49,7 +49,7 @@ public class DriverBase {
 		DriverBasidcInfoPO obj = new DriverBasidcInfoPO(driver);
 		DriverReviewPO obj2 = new DriverReviewPO(driver);
 		final String name = ExcelUtils.getPropertyFromTestDataFile("driver.name");
-		final String lastName = ExcelUtils.getPropertyFromTestDataFile("driver.lastName");
+		final String lastName = GeneralUtils.generateRandomWords(1)[0];
 		final String email = "automation_"+System.currentTimeMillis()+"@mailinator.com";
 		final String phone = ExcelUtils.getPropertyFromTestDataFile("driver.phone");
 		

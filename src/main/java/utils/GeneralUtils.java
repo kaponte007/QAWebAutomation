@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.List;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -60,5 +61,26 @@ public class GeneralUtils {
 
     public static void clearLogs() {
         log.clear();
+    }
+    
+    public static String[] generateRandomWords(int numberOfWords)
+    {
+        String[] randomStrings = new String[numberOfWords];
+        Random random = new Random();
+        for(int i = 0; i < numberOfWords; i++)
+        {
+            char[] word = new char[random.nextInt(8)+3]; // words of length 3 through 10. (1 and 2 letter words are boring.)
+            for(int j = 0; j < word.length; j++)
+            {
+                word[j] = (char)('a' + random.nextInt(26));
+            }
+            randomStrings[i] = new String(word);
+        }
+        return randomStrings;
+    }
+    
+    public static String generateRandomPlate() {
+    	Random random = new Random();
+    	return ""+(random.nextInt(99999)+123);
     }
 }

@@ -9,6 +9,7 @@ import pageObjects.VehicleBasidcInfoPO;
 import pageObjects.VehicleDetailsPO;
 import pageObjects.VehicleHomePO;
 import utils.ExcelUtils;
+import utils.GeneralUtils;
 
 public class VehicleBase {
 	private WebDriver driver;
@@ -30,7 +31,7 @@ public class VehicleBase {
 
 	public void populateVehicleInfo() throws IOException {
 		VehicleBasidcInfoPO obj = new VehicleBasidcInfoPO(driver);
-		final String plate = ExcelUtils.getPropertyFromTestDataFile("vehicle.license");
+		final String plate = GeneralUtils.generateRandomPlate();
 		final String cab = ExcelUtils.getPropertyFromTestDataFile("vehicle.cab");
 		final String make = ExcelUtils.getPropertyFromTestDataFile("vehicle.make");
 		final String model = ExcelUtils.getPropertyFromTestDataFile("vehicle.model");
