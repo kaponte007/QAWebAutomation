@@ -1,7 +1,10 @@
 package stepDefinition;
 
+import java.io.IOException;
+
 import base.CallcenterBase;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import utils.BrowserConfig;
 
@@ -43,6 +46,17 @@ public class CallcenterSteps {
 		base.makeCopy();
 	}
 	
+	@Given("I go to call center home page")
+	public void go_callcenter_home() throws IOException {
+		CallcenterBase base = new CallcenterBase(BrowserConfig.getDriver());
+		base.goHome();
+	}
+	
+	@Then("I click on the first row")
+	public void click_first_row() {
+		CallcenterBase base = new CallcenterBase(BrowserConfig.getDriver());
+		base.clickFirstRow();
+	}
 
 
 

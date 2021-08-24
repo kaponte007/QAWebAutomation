@@ -1,5 +1,7 @@
 package base;
 
+import java.io.IOException;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
@@ -69,6 +71,18 @@ public class CallcenterBase {
 	public void makeCopy() {
 		CallcenterHomePO obj = new CallcenterHomePO(driver);
 		obj.getMakeCopyBtn().click();		
+	}
+
+	public void goHome() throws IOException {
+		ExcelUtils.loadTestingData("credentials.xlsx", "URL");
+		final String url = ExcelUtils.getPropertyFromTestDataFile("url.callcenter.qa")+"/rides/list";
+		driver.get(url);
+	}
+
+	public void clickFirstRow() {
+		CallcenterHomePO obj = new CallcenterHomePO(driver);
+		obj.getFirstRideRow().click();
+		System.out.println("");
 	}
 	
 	

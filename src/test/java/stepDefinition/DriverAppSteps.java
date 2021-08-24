@@ -46,4 +46,15 @@ public class DriverAppSteps {
 		base.selectAnAvailableVehicle();
 	}
 	
+	@Then("I select shift hours")
+	public void select_shift_hours() {
+		DriverAppBase base = new DriverAppBase(BrowserConfig.getDriver());
+		base.selectShiftHours();
+	}
+	
+	@And("I click start")
+	public void click_start_btn() {
+		DriverAppBase base = new DriverAppBase(BrowserConfig.getDriver());
+		base.clickStartBtn();
+	}
 }

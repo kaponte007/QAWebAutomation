@@ -27,7 +27,7 @@ public class DriverAppHomePO {
 	}
 	
 	public WebElement getHourRadioBtn() {
-		return driver.findElement(By.id("hour"));
+		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='hour']/..")));
 	}
 	
 	public WebElement getStartBtn() {
@@ -35,11 +35,16 @@ public class DriverAppHomePO {
 	}
 	
 	public List<WebElement> getAvailableVehicles() {
-		return driver.findElements(By.xpath("//div[@class='wrap-vehicle']/following-sibling::div"));
+		return driver.findElements(By.xpath("//div[@class='wrap-vehicle']/following-sibling::div[not(@class='empty_content')]"));
 	}
 	
 	public WebElement getSelectVehicleLabel() {
 		return getNameLabel("SELECT YOUR VEHICLE");
+	}
+	
+	public WebElement getShiftHourTxtbox() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,'item-qty')]/div/input")));
+		
 	}
 
 }

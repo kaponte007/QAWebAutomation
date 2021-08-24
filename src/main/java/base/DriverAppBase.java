@@ -10,7 +10,9 @@ import pageObjects.DriverAppLogInPO;
 import pageObjects.DriverAppSignUpPO;
 import pageObjects.LogInPO;
 import pojo.DriverPojo;
+import utils.BrowserConfig;
 import utils.ExcelUtils;
+import utils.GeneralUtils;
 
 public class DriverAppBase {
 	private WebDriver driver;
@@ -78,11 +80,22 @@ public class DriverAppBase {
 
 	public void selectAnAvailableVehicle() {
 		DriverAppHomePO obj = new DriverAppHomePO(driver);
+		GeneralUtils.forceWait(1);
 		int vehicles = obj.getAvailableVehicles().size();
 		System.out.println("Vehicles available: "+vehicles);
 		Assert.assertTrue(vehicles>0, "No vehicles available");
 		obj.getAvailableVehicles().get(0).click();
-		System.out.print("asas");
+	}
+
+	public void selectShiftHours() {
+		DriverAppHomePO obj = new DriverAppHomePO(driver);
+		obj.getHourRadioBtn().click();
+	}
+
+	public void clickStartBtn() {
+		DriverAppHomePO obj = new DriverAppHomePO(driver);
+		obj.getStartBtn().click();
+		System.out.println("Driver shift started");	
 	}
 
 }

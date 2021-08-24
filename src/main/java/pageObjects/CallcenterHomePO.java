@@ -31,5 +31,9 @@ public class CallcenterHomePO {
 		return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//a[text()='Make a Copy']"))).get(0);
 	}
 	
+	public WebElement getFirstRideRow() {
+		return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//tbody/tr"))).get(0);
+	}
+	
 
 }

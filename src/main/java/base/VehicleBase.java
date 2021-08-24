@@ -8,6 +8,7 @@ import org.testng.Assert;
 import pageObjects.VehicleBasidcInfoPO;
 import pageObjects.VehicleDetailsPO;
 import pageObjects.VehicleHomePO;
+import pojo.DriverPojo;
 import utils.ExcelUtils;
 import utils.GeneralUtils;
 
@@ -42,14 +43,16 @@ public class VehicleBase {
 		obj.getModelDropdown().sendKeys(model);
 		obj.getCabNumberTxtBox().sendKeys(cab);
 		obj.getSaveCloseBtn().click();
+		
+		System.out.println("Using licence plate: "+plate);
+		DriverPojo.setVehiclePlate(plate);
 	}
 
 	public void validateVehicule() throws IOException {
 		VehicleHomePO obj = new VehicleHomePO(driver);
 		VehicleDetailsPO obj2 = new VehicleDetailsPO(driver);
-		final String plate = ExcelUtils.getPropertyFromTestDataFile("vehicle.license");
 		Assert.assertNotNull(obj.getVehiclesTitle());
-		obj.getSearchTxtBox().sendKeys(plate);
+		obj.getSearchTxtBox().sendKeys(DriverPojo.getVehiclePlate());
 		Assert.assertNotNull(obj2.getPlateLabel());
 	}
 
