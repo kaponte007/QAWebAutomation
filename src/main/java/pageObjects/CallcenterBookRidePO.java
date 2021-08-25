@@ -58,7 +58,13 @@ public class CallcenterBookRidePO {
 	public WebElement getFirstOptionListAccount() {
 		return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class='inner-list']/a"))).get(0);
 	}
-	
 
+	public WebElement getAssignDriverTxtbox() {
+		return wait.until(ExpectedConditions.presenceOfElementLocated(By.name("driverInput")));
+	}
+	
+	public WebElement getSaveChangesBtn() {
+		return driver.findElement(By.xpath("//button[text()='Save Changes']"));
+	}
 
 }

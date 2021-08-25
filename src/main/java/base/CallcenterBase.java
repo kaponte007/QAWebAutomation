@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 import pageObjects.CallcenterBookRidePO;
 import pageObjects.CallcenterHomePO;
+import pojo.DriverPojo;
 import utils.ExcelUtils;
 import utils.GeneralUtils;
 
@@ -46,11 +47,11 @@ public class CallcenterBase {
 		obj.getRiderEmailTxtBox().sendKeys("testing@test.com");
 		
 		obj.getPickUpLocationTxtBox().sendKeys("JFK Airport (JFK), Queens, NY, USA");
-		GeneralUtils.forceWait(1);
+		GeneralUtils.forceWait(2);
 		obj.getPickUpLocationTxtBox().sendKeys(Keys.DOWN);
 		obj.getPickUpLocationTxtBox().sendKeys(Keys.ENTER);
 		obj.getDropoffLocationTxtBox().sendKeys("Queens Hospital Center");
-		GeneralUtils.forceWait(1);
+		GeneralUtils.forceWait(2);
 		obj.getDropoffLocationTxtBox().sendKeys(Keys.DOWN);
 		obj.getDropoffLocationTxtBox().sendKeys(Keys.ENTER);
 		GeneralUtils.forceWait(1);
@@ -59,7 +60,7 @@ public class CallcenterBase {
 	public void clickNextAvailableBtn() {
 		CallcenterBookRidePO obj = new CallcenterBookRidePO(driver);
 		obj.getTimingNextAvailableBtn().click();
-		
+		GeneralUtils.forceWait(1);
 		System.out.println("ESTIMATE FARE: "+obj.getEstimatedFareLabel().getText());
 	}
 
@@ -82,7 +83,22 @@ public class CallcenterBase {
 	public void clickFirstRow() {
 		CallcenterHomePO obj = new CallcenterHomePO(driver);
 		obj.getFirstRideRow().click();
-		System.out.println("");
+		System.out.println("Clicking first row");
+	}
+
+	public void assignDriver() {
+		CallcenterBookRidePO obj = new CallcenterBookRidePO(driver);
+		String name = DriverPojo.getName()+" "+DriverPojo.getLastName();
+		obj.getAssignDriverTxtbox().sendKeys(name);
+		obj.getAssignDriverTxtbox().sendKeys(Keys.DOWN);
+		obj.getAssignDriverTxtbox().sendKeys(Keys.ENTER);
+		System.out.println("Assigning to: "+name);
+	}
+
+	public void clickSaveChanges() {
+		CallcenterBookRidePO obj = new CallcenterBookRidePO(driver);
+		obj.getSaveChangesBtn().click();
+		System.out.println("Clicking save changes...");		
 	}
 	
 	
