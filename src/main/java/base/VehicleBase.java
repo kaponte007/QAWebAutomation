@@ -5,10 +5,10 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import entities.DriverEntity;
 import pageObjects.VehicleBasidcInfoPO;
 import pageObjects.VehicleDetailsPO;
 import pageObjects.VehicleHomePO;
-import pojo.DriverPojo;
 import utils.ExcelUtils;
 import utils.GeneralUtils;
 
@@ -45,14 +45,14 @@ public class VehicleBase {
 		obj.getSaveCloseBtn().click();
 		
 		System.out.println("Using licence plate: "+plate);
-		DriverPojo.setVehiclePlate(plate);
+		DriverEntity.setVehiclePlate(plate);
 	}
 
 	public void validateVehicule() throws IOException {
 		VehicleHomePO obj = new VehicleHomePO(driver);
 		VehicleDetailsPO obj2 = new VehicleDetailsPO(driver);
 		Assert.assertNotNull(obj.getVehiclesTitle());
-		obj.getSearchTxtBox().sendKeys(DriverPojo.getVehiclePlate());
+		obj.getSearchTxtBox().sendKeys(DriverEntity.getVehiclePlate());
 		Assert.assertNotNull(obj2.getPlateLabel());
 	}
 

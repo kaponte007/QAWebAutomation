@@ -5,12 +5,12 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import entities.DriverEntity;
 import pageObjects.DriverBasidcInfoPO;
 import pageObjects.DriverDetailsPO;
 import pageObjects.DriverHomePO;
 import pageObjects.DriverReviewPO;
 import pageObjects.LogInPO;
-import pojo.DriverPojo;
 import utils.ExcelUtils;
 import utils.GeneralUtils;
 
@@ -29,8 +29,8 @@ public class DriverBase {
 	
 	public void logIn() throws Exception {
 		ExcelUtils.loadTestingData("credentials.xlsx", "CREDENTIALS");
-		final String username = ExcelUtils.getPropertyFromTestDataFile("username");
-		final String password = ExcelUtils.getPropertyFromTestDataFile("password");
+		final String username = ExcelUtils.getPropertyFromTestDataFile("username.3");
+		final String password = ExcelUtils.getPropertyFromTestDataFile("password.3");
 		LogInPO obj = new LogInPO(driver);
 		
 		obj.getUsernameTxtBox().clear();
@@ -63,9 +63,9 @@ public class DriverBase {
 		System.out.println("Using email generated: "+email);
 		
 		//Saving the driver info in memory
-		DriverPojo.setEmail(email);
-		DriverPojo.setLastName(lastName);
-		DriverPojo.setName(name);
+		DriverEntity.setEmail(email);
+		DriverEntity.setLastName(lastName);
+		DriverEntity.setName(name);
 	}
 	
 	public void validateDriverCreated() {

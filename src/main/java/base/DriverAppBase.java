@@ -5,11 +5,11 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import entities.DriverEntity;
 import pageObjects.DriverAppHomePO;
 import pageObjects.DriverAppLogInPO;
 import pageObjects.DriverAppSignUpPO;
 import pageObjects.LogInPO;
-import pojo.DriverPojo;
 import utils.BrowserConfig;
 import utils.ExcelUtils;
 import utils.GeneralUtils;
@@ -28,7 +28,7 @@ public class DriverAppBase {
 	}
 
 	public void signUp() throws Exception {
-		final String email = DriverPojo.getEmail();
+		final String email = DriverEntity.getEmail();
 		ExcelUtils.loadTestingData("credentials.xlsx", "URL");
 		final String url = ExcelUtils.getPropertyFromTestDataFile("url.driverapp.qa") + "/signup?email=" + email;
 		Assert.assertNotNull(email, "There is no email in POJO class");
@@ -48,7 +48,7 @@ public class DriverAppBase {
 
 	public void validateDriverName() {
 		DriverAppHomePO obj = new DriverAppHomePO(driver);
-		String name = DriverPojo.getName()+" "+DriverPojo.getLastName();
+		String name = DriverEntity.getName()+" "+DriverEntity.getLastName();
 		Assert.assertNotNull(obj.getNameLabel(name), "Unable to validate driver's name");
 		System.out.println(name+" // Name validated!");
 	}

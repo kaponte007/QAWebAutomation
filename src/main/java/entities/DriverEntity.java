@@ -1,6 +1,6 @@
-package pojo;
+package entities;
 
-public class DriverPojo {
+public class DriverEntity {
 
 	private static String name, lastName, email, vehiclePlate;
 
@@ -9,7 +9,7 @@ public class DriverPojo {
 	}
 
 	public static void setEmail(String email) {
-		DriverPojo.email = email;
+		DriverEntity.email = email;
 	}
 
 	public static String getLastName() {
@@ -17,7 +17,7 @@ public class DriverPojo {
 	}
 
 	public static void setLastName(String lastName) {
-		DriverPojo.lastName = lastName;
+		DriverEntity.lastName = lastName;
 	}
 
 	public static String getName() {
@@ -25,7 +25,7 @@ public class DriverPojo {
 	}
 
 	public static void setName(String name) {
-		DriverPojo.name = name;
+		DriverEntity.name = name;
 	}
 
 	public static String getVehiclePlate() {
@@ -33,6 +33,6 @@ public class DriverPojo {
 	}
 
 	public static void setVehiclePlate(String vehiclePlate) {
-		DriverPojo.vehiclePlate = vehiclePlate;
+		DriverEntity.vehiclePlate = vehiclePlate;
 	}
 }

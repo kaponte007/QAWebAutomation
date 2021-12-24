@@ -69,5 +69,11 @@ public class CallcenterSteps {
 		CallcenterBase base = new CallcenterBase(BrowserConfig.getDriver());
 		base.clickSaveChanges();
 	}
+	
+	@And("I populate ride using data from {string} sheet {string}")
+	public void populate_ride_excel(String file, String sheet) throws IOException {
+		CallcenterBase base = new CallcenterBase(BrowserConfig.getDriver());
+		base.populateRideInfoFromExcel(file, sheet);
+	}
 
 }
