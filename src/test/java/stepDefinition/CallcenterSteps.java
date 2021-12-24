@@ -70,10 +70,33 @@ public class CallcenterSteps {
 		base.clickSaveChanges();
 	}
 	
-	@And("I populate ride using data from {string} sheet {string}")
-	public void populate_ride_excel(String file, String sheet) throws IOException {
+	@And("I populate rider info using data from excel")
+	public void populate_rider_excel() throws IOException {
 		CallcenterBase base = new CallcenterBase(BrowserConfig.getDriver());
-		base.populateRideInfoFromExcel(file, sheet);
+		base.populateRideInfoFromExcel();
 	}
-
+	
+	@And("I populate trip info using data from excel")
+	public void populate_trip_excel() throws IOException {
+		CallcenterBase base = new CallcenterBase(BrowserConfig.getDriver());
+		base.populateTripInfoFromExcel();
+	}
+	
+	@And("I populate timing info using data from excel")
+	public void populate_timing_excel() throws IOException {
+		CallcenterBase base = new CallcenterBase(BrowserConfig.getDriver());
+		base.populateTimingInfoFromExcel();
+	}
+	
+	@Given("I select the ride service name")
+	public void populate_service_excel() throws IOException {
+		CallcenterBase base = new CallcenterBase(BrowserConfig.getDriver());
+		base.selectServiceFromExcel();
+	}
+	
+	@Then("I validate the fare")
+	public void validate_fare_excel() throws IOException {
+		CallcenterBase base = new CallcenterBase(BrowserConfig.getDriver());
+		base.validateFareFromExcel();
+	}
 }

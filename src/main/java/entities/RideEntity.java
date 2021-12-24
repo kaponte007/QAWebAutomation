@@ -11,5 +11,7 @@ public class RideEntity {
 	public String riderLastName;
 	public String riderPhone;
 	public String riderEmail;
-
+	public String mileageIncluded;
+	public String mileageExtraRate;
+	public String distance;
 }

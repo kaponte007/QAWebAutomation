@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utils.GeneralUtils;
+
 public class CallcenterBookRidePO {
 	private WebDriverWait wait;
 	private WebDriver driver;
@@ -20,7 +22,7 @@ public class CallcenterBookRidePO {
 	}
 	
 	public WebElement getRiderFirstNameTxtBox() {
-		return driver.findElement(By.name("riderFirstName"));
+		return wait.until(ExpectedConditions.elementToBeClickable(By.name("riderFirstName")));
 	}
 	
 	public WebElement getRiderLastNameTxtBox() {
@@ -47,8 +49,14 @@ public class CallcenterBookRidePO {
 		return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Next Available']")));
 	}
 	
+	public WebElement getTimingScheduledBtn() {
+		return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Scheduled']")));
+	}
+	
 	public WebElement getEstimatedFareLabel() {
-		return driver.findElement(By.xpath("//strong[text()='Estimated Fare']/../following-sibling::div"));
+		WebElement temp = driver.findElement(By.xpath("//strong[text()='Estimated Fare']/../following-sibling::div"));
+		GeneralUtils.scrollToElement(temp);
+		return temp;
 	}
 	
 	public WebElement getScheduleRideBtn() {
@@ -65,6 +73,44 @@ public class CallcenterBookRidePO {
 	
 	public WebElement getSaveChangesBtn() {
 		return driver.findElement(By.xpath("//button[text()='Save Changes']"));
+	}
+	
+	public WebElement getNextMonthPicker() {
+		return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Next Month']")));
+	}
+	
+	public WebElement getTimePicker(String time) {
+		WebElement temp = driver.findElement(By.xpath("//li[contains(text(), '"+time+"')]"));
+		GeneralUtils.scrollToElement(temp);
+		return temp;
+	}
+	
+	public WebElement getStartDatePicker() {
+		return driver.findElement(By.xpath("//input[@name='start-date']"));
+	}
+	
+	private WebElement getRideService(String str) {
+		return driver.findElement(By.xpath("//*[text()='"+str+"']/.."));
+	}
+	
+	public WebElement getServiceWheelchair() {
+		return getRideService("WHEELCHAIR SHARED");
+	}
+	
+	public WebElement getServiceAmbulatory() {
+		return getRideService("AMBULATORY SHARED");
+	}
+	
+	public WebElement getServiceStretcher() {
+		return getRideService("STRETCHER SHARED");
+	}
+	
+	public WebElement getServiceHospital() {
+		return getRideService("HOSP DISCHARGE SHARED");
+	}
+	
+	public WebElement getServiceHoliday() {
+		return getRideService("SUNDAY/HOLIDAY SHARED");
 	}
 
 }
